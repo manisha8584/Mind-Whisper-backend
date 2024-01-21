@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "backened",
   "version": "1.0.0",
-  "description": "mental health",
+  "description": "menatal health analyzer backened",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

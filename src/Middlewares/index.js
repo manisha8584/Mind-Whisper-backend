@@ -1,6 +1,7 @@
+const {check,validationResult}=require("express-validator")
+
 const jwt = require("jsonwebtoken")
-const {check} = require("express-validator")
-const {validationResult} = require("express-validator")
+
 
 exports.verifyToken=(req,res,next)=>{
     try{
@@ -22,20 +23,18 @@ exports.verifyToken=(req,res,next)=>{
     }
 }
 
-exports.validateForm = [
-  check("name").notEmpty().withMessage("Please Enter Name"),
-  check("phoneNumber").isMobilePhone().withMessage("Please Enter  Valid Phone Number"),
-  check("email").isEmail().withMessage("Please Enter Valid Email"),
-  check("intrest").notEmpty().withMessage("Please Enter Intrest"),
-  check("message").isLength({max:100,min:1}).withMessage("Please Enter Within 100 chars ")
+exports.validateForm=[
+    check("name").notEmpty().withMessage("please enter name"),
+    check("phonenumber").isMobilePhone().withMessage("please enter valid phone number"),
+    check("email").isEmail().withMessage("please enter valid email id"),
+    check("intrest").notEmpty().withMessage("please enter your intrest"),
+    check("message").isLength({max:100,min:1}).withMessage("please enter within 100 character message")
 ]
-    
+exports.isvalidated=(req,res,next)=>{
+   const error=validationResult(req)
+  if(error.array().length>0){
+    return  res.status(400).json({message:error.array()[0]})
 
-exports.isValidated = (req,res,next) =>{
-   const errors = validationResult(req)
-
-   if(errors.array().length > 0){
-   return  res.status(400).json({message:errors.array()[0]})
    }
    next()
 }

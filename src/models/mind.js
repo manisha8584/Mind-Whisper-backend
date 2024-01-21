@@ -1,4 +1,4 @@
 const mongoose = require("mongoose")
-const form = new mongoose.Schema ({
+const form = new mongoose.Schema({
     
 })

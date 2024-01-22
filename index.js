@@ -1,6 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
-
+const Users = require("./src/models/users")
 const { register, login, findUser } = require("./src/Controllers/users")
 const server = express()
 const cors = require("cors")
